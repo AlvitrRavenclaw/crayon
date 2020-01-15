@@ -9,7 +9,6 @@ object Solution69 {
 //
 //        var (l, r): (Long, Long) = (1, x / 2 + 1);
 //        while (l + 1 < r) {
-//            println(l, r);
 //            var (l2, r2): (Long, Long) = (l * l, r * r);
 //            if (l2 == x) {
 //                return l.toInt;
