@@ -1,17 +1,18 @@
 package daily.middle
 
-object Solution1302 {
-    def deepestLeavesSum(root: TreeNode): Int = {
-        var ans: Int = 0
+object Solution199 {
+    def rightSideView(root: TreeNode): List[Int] = {
+        var ans = List[Int]()
         if (root == null) {
-            return 0
+            return ans
         }
         var queue = collection.mutable.Queue[TreeNode](root)
         while (queue.nonEmpty) {
-            var (sum, len): (Int, Int) = (0, queue.length)
-            for (i <- 0 until len) {
+            var len: Int = queue.length
+            var tmp: Int = -1
+            for (_ <- 0 until len) {
                 var node: TreeNode = queue.dequeue()
-                sum += node.value
+                tmp = node.value
                 if (node.left != null) {
                     queue.enqueue(node.left)
                 }
@@ -19,21 +20,17 @@ object Solution1302 {
                     queue.enqueue(node.right)
                 }
             }
-            ans = sum
+            ans :+= tmp
         }
         return ans
     }
 
     def main(args: Array[String]): Unit = {
         var root: TreeNode = new TreeNode(1)
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        root.left.left = new TreeNode(4)
+        root.left = new TreeNode(2)
+        root.right = new TreeNode(3)
         root.left.right = new TreeNode(5)
-        root.right.right = new TreeNode(6)
-        root.left.left.left = new TreeNode(7)
-        root.right.right.right = new TreeNode(8)
-
-        assert(deepestLeavesSum(root) == 15)
+        root.right.right = new TreeNode(4)
+        assert(rightSideView(root) equals List[Int](1, 3, 4))
     }
 }

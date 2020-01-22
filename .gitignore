@@ -1,0 +1,10 @@
+# IDE
+.idea/
+
+# SBT
+build.sbt
+.bloop
+.metals
+project
+target
+*.log
